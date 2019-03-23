@@ -10,28 +10,47 @@ $errors = isset($_GET['errors']) ? $_GET['errors'] : array();
 $confirmations = isset($_GET['confirmations']) ? $_GET['confirmations'] : array();
 ?>
 
-<?php if ($errors && array_key_exists('bad_credentials', $errors) && $errors['bad_credentials']) { ?>
-    <div>Credenziali errate</div>
-<?php } ?>
 
-<?php if ($confirmations && array_key_exists('registration', $confirmations) && $confirmations['registration']) { ?>
-    <div>Registrazione effettuata! Accedi con i tuoi dati</div>
-<?php } ?>
+<div class="container">
+    <div class="login-wrapper">
+        <h1 class="page-title center">Hi! Let's Streamify</h1>
 
-    <form action="../controllers/login.php" method="post">
-        username*
-        <input name="username"
-               type="text"
-               id="username"
-               required>
-        password*
-        <input name="password"
-               type="password"
-               id="password"
-               required>
-        <button type="submit">Login</button>
-    </form>
-    <a href="register.php">Non hai un'account? Registrati</a>
+        <?php if ($confirmations && array_key_exists('registration', $confirmations) && $confirmations['registration']) { ?>
+            <div class="alert alert-success">Registrazione effettuata! Accedi con i tuoi dati</div>
+        <?php } ?>
+
+        <form action="../controllers/login.php"
+              method="post">
+            <div class="form-group">
+                <input name="username"
+                       class="form-control"
+                       placeholder="username*"
+                       type="text"
+                       id="username"
+                       required>
+            </div>
+            <div class="form-group">
+                <input name="password"
+                       class="form-control"
+                       placeholder="password*"
+                       type="password"
+                       id="password"
+                       required>
+            </div>
+
+            <?php if ($errors && array_key_exists('bad_credentials', $errors) && $errors['bad_credentials']) { ?>
+                <div class="alert alert-danger">Credenziali errate</div>
+            <?php } ?>
+
+            <button type="submit"
+                    class="btn btn-primary full">Login
+            </button>
+        </form>
+        <small>Non hai un'account?</small>
+        <a href="register.php"
+           class="btn btn-outline">Registrati</a>
+    </div>
+</div>
 
 <?php
 require '../partials/footer.php';

@@ -16,6 +16,8 @@ include_once('../db/db_connection.php');
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,700,900" rel="stylesheet">
+
     <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 

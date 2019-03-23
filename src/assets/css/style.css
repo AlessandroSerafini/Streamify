@@ -1,0 +1,173 @@
+body {
+    font-family: 'Muli', sans-serif;
+    letter-spacing: 2.2px;
+    padding: 60px 0;
+}
+
+
+h1 {
+    font-size: 64px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none !important;
+}
+
+
+.page-title {
+    font-weight: 900;
+    letter-spacing: 6.4px;
+    margin-top: 0;
+    margin-bottom: 70px;
+}
+
+.page-title.center {
+    text-align: center;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.login-wrapper {
+    text-align: center;
+    width: 550px;
+    margin: 0 auto;
+}
+
+
+form .form-group {
+    position: relative;
+    text-align: left;
+}
+
+
+form .form-group::before {
+    content: '';
+    position: absolute;
+    width: 11px;
+    height: 11px;
+    background-color: #1d1d1d;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+form .form-group input[type="checkbox"] {
+    margin-left: 35px;
+}
+
+
+form input.form-control,
+form select.form-control {
+    border: none;
+    box-shadow: none !important;
+    border-bottom: 2px solid #1d1d1d !important;
+    border-radius: 0;
+    color: #1d1d1d;
+    letter-spacing: inherit;
+    font-size: 16px;
+    padding: 0px 35px;
+    outline: none !important;
+    height: 45px;
+    -webkit-appearance: none;
+}
+
+form .btn {
+    margin-top: 20px;
+}
+
+form + small {
+    margin: 50px 0 20px;
+    font-size: inherit;
+    display: block;
+    font-weight: 700;
+}
+
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #999;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color: #999;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+:-ms-input-placeholder { /* IE 10+ */
+    color: #999;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #999;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+
+.btn {
+    border-radius: 0;
+    background: none;
+    min-width: 250px;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    text-transform: uppercase;
+    letter-spacing: inherit;
+    font-size: 16px;
+    padding: 8px 15px;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -ms-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #000 !important;
+    color: #FFF !important;
+}
+
+.btn-outline {
+    border: 1px solid #1d1d1d;
+}
+
+.btn-outline:hover {
+    background-color: #1d1d1d;
+    color: #FFFFFF;
+}
+
+.btn.full {
+    width: 100%;
+}
+
+.alert {
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.alert-danger {
+    color: #bd0000;
+}
+
+.alert-success {
+    color: #00c100;
+}
+
+.alert+form {
+    margin-top: 30px;
+}

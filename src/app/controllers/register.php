@@ -9,7 +9,7 @@ $first_name = trim($_POST['first_name']);
 $last_name = trim($_POST['last_name']);
 $birthday = trim($_POST['birthday']);
 $plan = trim($_POST['plan']);
-$sport_option = trim($_POST['sport_option']);
+$sport_option = isset($_POST['sport_option']) ? 1 : 0;
 $address = $_POST['address'] != '' ? $_POST['address'] : null;
 $num_civ = $_POST['num_civ'] != '' ? $_POST['num_civ'] : null;
 $city = $_POST['city'] != '' ? $_POST['city'] : null;

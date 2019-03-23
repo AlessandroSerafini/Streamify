@@ -9,21 +9,12 @@ if (isset($_SESSION['username'])) {
 $errors = isset($_GET['errors']) ? $_GET['errors'] : array();
 
 
-
-
 // Get plans
 $plan_sql = "SELECT * FROM piano p";
-
-
-$plan_result = mysqli_query($db_connection, $plan_sql);
-
-if (mysqli_num_rows($plan_result) > 0) {
-    $plans = $plan_result->fetch_all();
-} else {
+$plans = $db_connection->query($plan_sql);
+if ($plans->num_rows === 0) {
     die('Servizio offline: al momento non ci sono piani.');
 }
-
-
 
 ?>
 
@@ -35,8 +26,6 @@ if (mysqli_num_rows($plan_result) > 0) {
 <?php if ($errors && array_key_exists('registration', $errors) && $errors['registration']) { ?>
     <div>C'è stato un errore durante la registrazione, riprovare più tardi</div>
 <?php } ?>
-
-
 
 
 <form action="../controllers/register.php" method="post">
@@ -82,12 +71,12 @@ if (mysqli_num_rows($plan_result) > 0) {
            type="text"
            maxlength="50"
            id="city">
-    piano
+    piano *
     <select name="plan"
             id="plan">
         <?php
-        foreach ($plans as $plan) {
-            echo '<option value="' . (int)$plan[0] . '">Piano ' . $plan[0] . '</option>';
+        while($plan = $plans->fetch_assoc()) {
+            echo '<option value="' . (int)$plan['id'] . '">Piano ' . $plan['id'] . '</option>';
         }
         ?>
     </select>

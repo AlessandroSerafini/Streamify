@@ -19,10 +19,12 @@ $confirmations = isset($_GET['confirmations']) ? $_GET['confirmations'] : array(
 <?php } ?>
 
     <form action="../controllers/login.php" method="post">
+        username*
         <input name="username"
                type="text"
                id="username"
                required>
+        password*
         <input name="password"
                type="password"
                id="password"

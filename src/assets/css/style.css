@@ -10,6 +10,11 @@ h1 {
     font-size: 55px;
 }
 
+
+h3 {
+    line-height: 20px;
+}
+
 a {
     color: inherit;
     text-decoration: none !important;
@@ -175,9 +180,10 @@ form + small {
     background-color: #eee;
     padding-top: 130%;
     position: relative;
+    margin-bottom: 20px;
 }
 
-.contents-list .cover .duration {
+.contents-list .cover .info {
     position: absolute;
     top: 0;
     right: 0;
@@ -187,4 +193,67 @@ form + small {
     height: 60px;
     line-height: 60px;
     text-align: center;
+}
+
+.contents-list .cover .info i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 20px;
+}
+
+.contents-list .cover.sport .info,
+.contents-list .cover.sport footer {
+    background-color: #166df1;
+}
+
+.contents-list .cover footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #1d1d1d;
+    color: #FFF;
+    padding: 15px 20px;
+}
+
+.contents-list .cover footer h3,
+.contents-list .cover footer h4 {
+    font-size: 14px;
+}
+
+.contents-list .cover footer h3 {
+    text-transform: uppercase;
+    margin: 0;
+    min-height: 40px;
+}
+
+.contents-list .cover footer h4 {
+    margin: 10px 0 0;
+
+}
+
+.contents-list .cover > i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 90px;
+    color: #aaa;
+    margin-top: -40px;
+}
+
+.contents-list .cover + ul {
+    list-style-type: square;
+    padding-left: 40px;
+    font-size: 14px;
+    margin-bottom: 40px;
 }

@@ -2,11 +2,12 @@ body {
     font-family: 'Muli', sans-serif;
     letter-spacing: 2.2px;
     padding: 60px 0;
+    font-size: 16px;
 }
 
 
 h1 {
-    font-size: 64px;
+    font-size: 55px;
 }
 
 a {
@@ -25,6 +26,7 @@ a {
 .page-title.center {
     text-align: center;
     width: 400px;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -33,6 +35,7 @@ a {
 .login-wrapper {
     text-align: center;
     width: 550px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -60,7 +63,7 @@ form .form-group::before {
 
 
 form .form-group input[type="checkbox"] {
-    margin-left: 35px;
+    margin: 16px 0 16px 35px;
 }
 
 
@@ -72,8 +75,8 @@ form select.form-control {
     border-radius: 0;
     color: #1d1d1d;
     letter-spacing: inherit;
-    font-size: 16px;
-    padding: 0px 35px;
+    font-size: inherit;
+    padding: 0 35px;
     outline: none !important;
     height: 45px;
     -webkit-appearance: none;
@@ -94,25 +97,21 @@ form + small {
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #999;
     text-transform: uppercase;
-    font-size: 16px;
 }
 
 ::-moz-placeholder { /* Firefox 19+ */
     color: #999;
     text-transform: uppercase;
-    font-size: 16px;
 }
 
 :-ms-input-placeholder { /* IE 10+ */
     color: #999;
     text-transform: uppercase;
-    font-size: 16px;
 }
 
 :-moz-placeholder { /* Firefox 18- */
     color: #999;
     text-transform: uppercase;
-    font-size: 16px;
 }
 
 
@@ -125,8 +124,7 @@ form + small {
     text-shadow: none;
     text-transform: uppercase;
     letter-spacing: inherit;
-    font-size: 16px;
-    padding: 8px 15px;
+    padding: 10px 15px;
     -webkit-transition: background-color 0.3s;
     -moz-transition: background-color 0.3s;
     -ms-transition: background-color 0.3s;
@@ -168,6 +166,25 @@ form + small {
     color: #00c100;
 }
 
-.alert+form {
+.alert + form {
     margin-top: 30px;
+}
+
+.contents-list .cover {
+    width: 100%;
+    background-color: #eee;
+    padding-top: 130%;
+    position: relative;
+}
+
+.contents-list .cover .duration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #000;
+    color: #FFF;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
 }

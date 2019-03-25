@@ -58,166 +58,203 @@ $stand_alone_contents = $db_connection->query($stand_alone_sql);
 
 <div class="container">
     <h1 class="page-title center">Ciao <?php echo $user->nome ?>!</h1>
-    <?php
-
-    if ($errors && array_key_exists('delete', $errors) && $errors['delete']) {
-        ?>
-        <div>C'è stato un errore durante l'eliminazione dei dati, riprovare più tardi</div>
-        <?php
-    }
-    if ($errors && array_key_exists('generic', $errors) && $errors['generic']) {
-        ?>
-        <div>C'è stato un errore, riprovare più tardi</div><?php
-    }
-    ?>
-
-    <?php if ($errors && array_key_exists('update', $errors) && $errors['update']) {
-        ?>
-        <div class="alert alert-danger">C'è stato un errore durante l'aggiornamento, riprovare più tardi</div><?php
-    }
 
 
-    if ($confirmations && array_key_exists('update', $confirmations) && $confirmations['update']) {
-        ?>
-        <div class="alert alert-success">Dati aggiornati con successo!</div><?php
-    }
-    ?>
+    <div class="row personal-wrapper">
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+            <?php
 
-
-    <form action="../controllers/update-customer.php?id=<?php echo $user->id; ?>" method="post">
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-6">
-                <input name="username"
-                       type="text"
-                       class="form-control"
-                       placeholder="username*"
-                       maxlength="50"
-                       value="<?php echo $user->username; ?>"
-                       id="username"
-                       disabled
-                       required>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <input name="password"
-                       type="password"
-                       placeholder="password*"
-                       id="password"
-                       class="form-control"
-                       required>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <input name="first_name"
-                       type="text"
-                       maxlength="50"
-                       placeholder="nome*"
-                       class="form-control"
-                       id="first_name"
-                       value="<?php echo $user->nome; ?>"
-                       required>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <input name="last_name"
-                       type="text"
-                       class="form-control"
-                       placeholder="cognome*"
-                       id="last_name"
-                       value="<?php echo $user->cognome; ?>"
-                       required>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <input name="birthday"
-                       type="date"
-                       id="birthday"
-                       class="form-control"
-                       value="<?php echo $user->data_nascita; ?>"
-                       required>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <input name="address"
-                       type="text"
-                       maxlength="50"
-                       placeholder="via"
-                       class="form-control"
-                       value="<?php echo $user->via; ?>"
-                       id="address">
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <input name="num_civ"
-                       type="number"
-                       placeholder="numero civico"
-                       class="form-control"
-                       value="<?php echo $user->numero_civico; ?>"
-                       id="num_civ">
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <input name="city"
-                       class="form-control"
-                       type="text"
-                       maxlength="50"
-                       placeholder="città"
-                       value="<?php echo $user->citta; ?>"
-                       id="city">
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <select name="plan"
-                        class="form-control"
-                        id="plan"
-                    <?php if ($is_plan_valid) {
-                        echo " disabled";
-                    } ?>>
-                    <option value="<?php echo (int)$my_plan->id; ?>" selected>
-                        Piano <?php echo (int)$my_plan->id; ?></option>
-                    <?php if (!$is_plan_valid) {
-                        while ($plan = $all_plans->fetch_assoc()) {
-                            if ((int)$plan['id'] !== (int)$my_plan->id) { ?>
-                                <option value="<?php echo (int)$plan['id']; ?>">
-                                    Piano <?php echo (int)$plan['id']; ?></option>
-                            <?php }
-                        }
-                    } ?>
-                </select>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <input type="checkbox"
-                       name="sport_option"
-                    <?php
-                    if ($is_plan_valid) {
-                        echo " disabled='disabled' value='" . $my_plan->opzione_sport . "'";
-                    }
-                    if ((bool)$my_plan->opzione_sport) echo ' checked'; ?>> Opzione sport
-                <?php
-                if ($is_plan_valid) {
-                    ?>
-                    <input type="hidden" id="sport_option" name="sport_option"
-                           value="<?php echo $my_plan->opzione_sport; ?>"/>
-                    <?php
-                }
+            if ($errors && array_key_exists('delete', $errors) && $errors['delete']) {
                 ?>
-            </div>
+                <div class="alert alert-danger">C'è stato un errore durante l'eliminazione dei dati, riprovare più
+                    tardi
+                </div>
+                <?php
+            }
+            if ($errors && array_key_exists('generic', $errors) && $errors['generic']) {
+                ?>
+                <div class="alert alert-danger">C'è stato un errore, riprovare più tardi</div><?php
+            }
+            ?>
 
+            <?php if ($errors && array_key_exists('update', $errors) && $errors['update']) {
+                ?>
+                <div class="alert alert-danger">C'è stato un errore durante l'aggiornamento, riprovare più tardi
+                </div><?php
+            }
+
+
+            if ($confirmations && array_key_exists('update', $confirmations) && $confirmations['update']) {
+                ?>
+                <div class="alert alert-success">Dati aggiornati con successo!</div><?php
+            }
+            ?>
+            <form action="../controllers/update-customer.php?id=<?php echo $user->id; ?>" method="post">
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <input name="username"
+                                   type="text"
+                                   class="form-control"
+                                   placeholder="username*"
+                                   maxlength="50"
+                                   value="<?php echo $user->username; ?>"
+                                   id="username"
+                                   disabled
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <input name="password"
+                                   type="password"
+                                   placeholder="password*"
+                                   id="password"
+                                   class="form-control"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <input name="first_name"
+                                   type="text"
+                                   maxlength="50"
+                                   placeholder="nome*"
+                                   class="form-control"
+                                   id="first_name"
+                                   value="<?php echo $user->nome; ?>"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <input name="last_name"
+                                   type="text"
+                                   class="form-control"
+                                   placeholder="cognome*"
+                                   id="last_name"
+                                   value="<?php echo $user->cognome; ?>"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <input name="birthday"
+                                   type="date"
+                                   id="birthday"
+                                   class="form-control"
+                                   value="<?php echo $user->data_nascita; ?>"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <input name="address"
+                                   type="text"
+                                   maxlength="50"
+                                   placeholder="via"
+                                   class="form-control"
+                                   value="<?php echo $user->via; ?>"
+                                   id="address">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <input name="num_civ"
+                                   type="number"
+                                   placeholder="numero civico"
+                                   class="form-control"
+                                   value="<?php echo $user->numero_civico; ?>"
+                                   id="num_civ">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <input name="city"
+                                   class="form-control"
+                                   type="text"
+                                   maxlength="50"
+                                   placeholder="città"
+                                   value="<?php echo $user->citta; ?>"
+                                   id="city">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <select name="plan"
+                                    class="form-control"
+                                    id="plan"
+                                <?php if ($is_plan_valid) {
+                                    echo " disabled";
+                                } ?>>
+                                <option value="<?php echo (int)$my_plan->id; ?>" selected>
+                                    Piano <?php echo (int)$my_plan->id; ?></option>
+                                <?php if (!$is_plan_valid) {
+                                    while ($plan = $all_plans->fetch_assoc()) {
+                                        if ((int)$plan['id'] !== (int)$my_plan->id) { ?>
+                                            <option value="<?php echo (int)$plan['id']; ?>">
+                                                Piano <?php echo (int)$plan['id']; ?></option>
+                                        <?php }
+                                    }
+                                } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <input type="checkbox"
+                                   name="sport_option"
+                                <?php
+                                if ($is_plan_valid) {
+                                    echo " disabled='disabled' value='" . $my_plan->opzione_sport . "'";
+                                }
+                                if ((bool)$my_plan->opzione_sport) echo ' checked'; ?>> Opzione sport
+                            <?php
+                            if ($is_plan_valid) {
+                                ?>
+                                <input type="hidden" id="sport_option" name="sport_option"
+                                       value="<?php echo $my_plan->opzione_sport; ?>"/>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="cb">
+                    <button type="submit"
+                            class="btn btn-primary pull-left">Aggiorna dati personali
+                    </button>
+                    <a class="btn-danger pull-right"
+                       style="position: relative; top: 30px;"
+                       href="../controllers/delete-customer.php?id=<?php echo $user->id; ?>">
+                        Elimina account
+                    </a>
+                </div>
+
+            </form>
+            <p>oppure</p>
+            <a class="btn btn-outline btn-small"
+               href="logout.php">Logout</a>
         </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3">
+            <div class="box">
+                <h3>Dettagli piano</h3>
+                <div><strong>Piano: </strong><?php echo $my_plan->id; ?></div>
+                <div><strong>Attivazione: </strong><?php echo $my_plan->data_attivazione; ?></div>
+                <div><strong>Termine: </strong><?php echo $my_plan->data_termine; ?></div>
+                <div><strong>Pacchetto sport: </strong><?php echo $my_plan->opzione_sport; ?></div>
+                <div><strong>Numero dispositivi: </strong><?php echo $my_plan->numero_dispositivi; ?></div>
+                <div><strong>Qualità: </strong><?php echo $my_plan->qualita_definizione; ?></div>
+            </div>
+        </div>
+    </div>
 
 
-        <button type="submit">Aggiorna dati personali</button>
-
-    </form>
-
-    <br/><br/>
-    <a href="logout.php">Logout</a>
     <br/>
-    <a href="../controllers/delete-customer.php?id=<?php echo $user->id; ?>">Elimina
-        account</a>
-
-
-    <br/><br/>
-    <strong>PIANO</strong>
-    <div><?php echo "Piano " . $my_plan->id; ?></div>
-    <div><?php echo $my_plan->data_attivazione; ?></div>
-    <div><?php echo $my_plan->data_termine; ?></div>
-    <div><?php echo $my_plan->opzione_sport; ?></div>
-    <div><?php echo $my_plan->numero_dispositivi; ?></div>
-    <div><?php echo $my_plan->qualita_definizione; ?></div>
 
 
     <?php
@@ -280,7 +317,7 @@ $stand_alone_contents = $db_connection->query($stand_alone_sql);
                             <?php }
                             if (!$is_sport_content) {
                                 // Get user plan
-                                $actor_sql = "SELECT a.id FROM attore a
+                                $actor_sql = "SELECT a.id, r.protagonista FROM attore a
                             LEFT JOIN riferimento r ON a.id = r.id_attore
                             WHERE r.id_contenuto_multimediale = " . (int)$content['id'];
                                 $actors = $db_connection->query($actor_sql);
@@ -291,7 +328,11 @@ $stand_alone_contents = $db_connection->query($stand_alone_sql);
                                         <?php
                                         while ($actor = $actors->fetch_assoc()) {
                                             ?>
-                                            <li><?php echo "Attore " . $actor['id']; ?></li>
+                                            <li>
+                                                <?php if ((bool)$actor['protagonista']) echo "<strong>"; ?>
+                                                    <?php echo "Attore " . $actor['id']; ?>
+                                                    <?php if ((bool)$actor['protagonista']) echo "</strong>"; ?>
+                                            </li>
                                             <?php
                                         }
                                         ?>
@@ -318,12 +359,10 @@ $stand_alone_contents = $db_connection->query($stand_alone_sql);
                 while ($content = $stand_alone_contents->fetch_assoc()) {
                     ?>
                     <div class="col-xs-12 col-sm-6 col-md-4">
-                        <div class="cover<?php if ($is_sport_content) echo " sport"; ?>">
-                            <i class="fa fa-<?php echo ($is_sport_content) ? 'futbol' : 'film'; ?>"></i>
+                        <div class="cover sport">
+                            <i class="fa fa-futbol"></i>
                             <div class="info">
-                                <?php if ($content['durata'] !== null) { ?>
-                                    <strong> <?php echo $content['durata']; ?>"</strong>
-                                <?php }
+                                <?php
                                 if ($content['trasmissione'] !== null) { ?>
                                     <i class="fa fa-<?php echo ($content['trasmissione'] == 'live') ? 'broadcast-tower' : 'history'; ?>"></i>
                                 <?php } ?>
@@ -331,9 +370,6 @@ $stand_alone_contents = $db_connection->query($stand_alone_sql);
                             <footer>
                                 <h3> <?php echo $content['nome']; ?></h3>
                                 <?php
-                                if ($content['genere'] !== null) { ?>
-                                    <h4><?php echo $content['genere']; ?></h4>
-                                <?php }
                                 if ($content['sport'] !== null) { ?>
                                     <h4><?php echo $content['sport']; ?></h4>
                                 <?php }
@@ -345,47 +381,7 @@ $stand_alone_contents = $db_connection->query($stand_alone_sql);
                                 <li>
                                     Data:<strong> <?php echo $content['data']; ?></strong>
                                 </li>
-                            <?php }
-
-
-                            if ($content['regia'] !== null) { ?>
-                                <li>Regia:<strong> <?php echo $content['regia']; ?></strong></li>
-                            <?php }
-                            if ($content['anno_uscita'] !== null) { ?>
-                                <li>Anno di uscita:<strong> <?php echo $content['anno_uscita']; ?></strong></li>
-                            <?php }
-                            if ($content['lingua_parlato'] !== null) { ?>
-                                <li>Lingua parlato:<strong> <?php echo $content['lingua_parlato']; ?>
-                                </strong>
-                                </li><?php }
-                            if ($content['lingua_sottotitolazione'] !== null) { ?>
-                                <li>Lingua
-                                    sottotitolazione:<strong> <?php echo $content['lingua_sottotitolazione']; ?>
-                                    </strong>
-                                </li>
-                            <?php }
-                            if (!$is_sport_content) {
-                                // Get user plan
-                                $actor_sql = "SELECT a.id FROM attore a
-                            LEFT JOIN riferimento r ON a.id = r.id_attore
-                            WHERE r.id_contenuto_multimediale = " . (int)$content['id'];
-                                $actors = $db_connection->query($actor_sql);
-                                if ($actors->num_rows > 0) {
-                                    ?>
-                                    Attori:
-                                    <ul>
-                                        <?php
-                                        while ($actor = $actors->fetch_assoc()) {
-                                            ?>
-                                            <li><?php echo "Attore " . $actor['id']; ?></li>
-                                            <?php
-                                        }
-                                        ?>
-
-                                    </ul>
-                                    <?php
-                                }
-                            } ?>
+                            <?php } ?>
                         </ul>
                     </div>
                     <?php
@@ -422,7 +418,7 @@ $stand_alone_contents = $db_connection->query($stand_alone_sql);
         <?php
     } else {
         ?>
-        <div>Il tuo piano è scaduto! Non Puoi vedere i contenuti multimediali</div>
+        <div class="alert alert-danger">Il tuo piano è scaduto! Non Puoi vedere i contenuti multimediali</div>
         <?php
     }
     ?>

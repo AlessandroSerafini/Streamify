@@ -5,6 +5,12 @@ body {
     font-size: 16px;
 }
 
+.cb::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 
 h1 {
     font-size: 55px;
@@ -87,6 +93,12 @@ form select.form-control {
     -webkit-appearance: none;
 }
 
+form input.form-control[disabled],
+form select.form-control[disabled] {
+    opacity: 0.3;
+    background-color: inherit;
+}
+
 form .btn {
     margin-top: 20px;
 }
@@ -137,6 +149,13 @@ form + small {
     transition: background-color 0.3s;
 }
 
+.btn-danger {
+    background: none !important;
+    box-shadow: none;
+    text-shadow: none;
+    color: #d9534f !important;
+}
+
 .btn-primary {
     background-color: #000 !important;
     color: #FFF !important;
@@ -153,6 +172,32 @@ form + small {
 
 .btn.full {
     width: 100%;
+}
+
+.btn-small {
+    padding: 10px 25px;
+    min-width: inherit;
+    font-size: 11px;
+}
+
+.box {
+    background-color: #000;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 25px;
+    font-size: 12px;
+}
+
+.box h3 {
+    text-transform: uppercase;
+    font-size: 17px;
+    color: #FFF;
+    margin: 0 0 15px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #ffffffb5;
+}
+
+.box strong {
+    color: #FFF;
 }
 
 .alert {
@@ -256,4 +301,14 @@ form + small {
     padding-left: 40px;
     font-size: 14px;
     margin-bottom: 40px;
+}
+
+@media screen and (max-width: 767px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    .box {
+        margin-top: 20px;
+    }
 }
